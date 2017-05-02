@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- run vision module -->
+  <include file="$(find vision_module)/launch/internal_vision_module.launch"/>
+
+	<!-- vision_wrapper -->
+	    <node pkg="vision_module_wrapper" name="vision_module_wrapper_node" type="vision_wrapper.py">
+				<param  name="~parent_frame" value="map" />
+				<param  name="~child_frame" value="head_rgbd_sensor_rgb_frame" />
+			</node>
+
+	<!-- topic2db -->
+  <node pkg="vision_module_wrapper" name="topic2db" type="topic2db_node.py" output="screen"/>
+</launch>
